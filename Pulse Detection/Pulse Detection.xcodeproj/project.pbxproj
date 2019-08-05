@@ -12,6 +12,8 @@
 		B4D7184F22F8050D0004D579 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D7184D22F8050D0004D579 /* Main.storyboard */; };
 		B4D7185122F8050D0004D579 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4D7185022F8050D0004D579 /* Assets.xcassets */; };
 		B4D7185422F8050D0004D579 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4D7185222F8050D0004D579 /* LaunchScreen.storyboard */; };
+		B4D7187022F81AAC0004D579 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4D7186F22F81AAB0004D579 /* opencv2.framework */; };
+		B4D7187422F81B4C0004D579 /* OpenCVWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = B4D7187322F81B4C0004D579 /* OpenCVWrapper.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,11 @@
 		B4D7185022F8050D0004D579 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4D7185322F8050D0004D579 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B4D7185522F8050D0004D579 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4D7186F22F81AAB0004D579 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../../Downloads/opencv2.framework; sourceTree = "<group>"; };
+		B4D7187222F81B4C0004D579 /* OpenCVWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVWrapper.h; sourceTree = "<group>"; };
+		B4D7187322F81B4C0004D579 /* OpenCVWrapper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVWrapper.mm; sourceTree = "<group>"; };
+		B4D7187522F81B990004D579 /* Pulse Detection-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Pulse Detection-Bridging-Header.h"; sourceTree = "<group>"; };
+		B4D7187622F81BD00004D579 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4D7187022F81AAC0004D579 /* opencv2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,8 +46,11 @@
 		B4D7183D22F8050D0004D579 = {
 			isa = PBXGroup;
 			children = (
+				B4D7187522F81B990004D579 /* Pulse Detection-Bridging-Header.h */,
+				B4D7187122F81B310004D579 /* OpenCV Wrapper */,
 				B4D7184822F8050D0004D579 /* Pulse Detection */,
 				B4D7184722F8050D0004D579 /* Products */,
+				B4D7185B22F806900004D579 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,6 +73,24 @@
 				B4D7185522F8050D0004D579 /* Info.plist */,
 			);
 			path = "Pulse Detection";
+			sourceTree = "<group>";
+		};
+		B4D7185B22F806900004D579 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B4D7186F22F81AAB0004D579 /* opencv2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B4D7187122F81B310004D579 /* OpenCV Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				B4D7187222F81B4C0004D579 /* OpenCVWrapper.h */,
+				B4D7187322F81B4C0004D579 /* OpenCVWrapper.mm */,
+				B4D7187622F81BD00004D579 /* PrefixHeader.pch */,
+			);
+			path = "OpenCV Wrapper";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +125,7 @@
 				TargetAttributes = {
 					B4D7184522F8050D0004D579 = {
 						CreatedOnToolsVersion = 10.2;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -137,6 +167,7 @@
 			files = (
 				B4D7184C22F8050D0004D579 /* ViewController.swift in Sources */,
 				B4D7184A22F8050D0004D579 /* AppDelegate.swift in Sources */,
+				B4D7187422F81B4C0004D579 /* OpenCVWrapper.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,8 +313,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2UKB93VB8Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/OpenCV Wrapper/PrefixHeader.pch";
 				INFOPLIST_FILE = "Pulse Detection/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -292,7 +330,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tintashRnD.Pulse-Detection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pulse Detection-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -301,8 +342,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2UKB93VB8Y;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Frameworks/",
+					"$(PROJECT_DIR)",
+				);
+				GCC_PREFIX_HEADER = "$(SRCROOT)/OpenCV Wrapper/PrefixHeader.pch";
 				INFOPLIST_FILE = "Pulse Detection/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -311,7 +359,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.tintashRnD.Pulse-Detection";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Pulse Detection-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
